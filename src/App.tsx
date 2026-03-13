@@ -1,8 +1,48 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { CheckCircle2, ChevronRight, Calendar, Users, ShieldAlert, HeartCrack, UserX, Frown, Brain, Sparkles, Star, ChevronDown } from 'lucide-react';
+import { CheckCircle2, ChevronRight, ChevronLeft, Calendar, Users, ShieldAlert, HeartCrack, UserX, Frown, Brain, Sparkles, Star, ChevronDown } from 'lucide-react';
 
 export default function App() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) return;
+
+    const interval = setInterval(() => {
+      if (carouselRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+        // Se chegou no final, volta pro começo
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Rola a largura de um card dinamicamente
+          const card = carouselRef.current.querySelector('.flex-shrink-0');
+          const scrollAmount = card ? card.clientWidth + 24 : 444; // 420px + 24px gap
+          carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
+  const scrollLeftBtn = () => {
+    if (carouselRef.current) {
+      const card = carouselRef.current.querySelector('.flex-shrink-0');
+      const scrollAmount = card ? card.clientWidth + 24 : 444;
+      carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRightBtn = () => {
+    if (carouselRef.current) {
+      const card = carouselRef.current.querySelector('.flex-shrink-0');
+      const scrollAmount = card ? card.clientWidth + 24 : 444;
+      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary font-sans selection:bg-accent selection:text-[#0A0F16]">
       {/* Hero Section */}
@@ -66,11 +106,11 @@ export default function App() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="w-full sm:w-auto flex flex-col items-center md:items-start mt-4"
             >
-              <button className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-[#0A0F16] font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(108,229,177,0.2)]">
+              <a href="#pricing" className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-[#0A0F16] font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(108,229,177,0.2)]">
                 <span>Garantir minha vaga</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black text-accent text-[10px] px-3 py-1 rounded-full uppercase tracking-wider font-bold shadow-lg border border-accent/20 whitespace-nowrap">1º Lote</span>
-              </button>
+              </a>
             </motion.div>
           </div>
         </div>
@@ -109,11 +149,11 @@ export default function App() {
               ))}
             </ul>
 
-            <button className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-200 text-black font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300">
+            <a href="#pricing" className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-200 text-black font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300">
               <span>Garantir minha vaga</span>
               <ChevronRight className="w-5 h-5 text-black group-hover:translate-x-1 transition-transform" />
               <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-3 py-1 rounded-full uppercase tracking-wider font-bold shadow-lg whitespace-nowrap">1º Lote</span>
-            </button>
+            </a>
           </motion.div>
         </div>
       </section>
@@ -199,11 +239,11 @@ export default function App() {
                   <span className="text-accent block mt-2">Mas, sem perceber, ele acaba tirando das suas mãos o controle da própria vida.</span>
                 </p>
                 
-                <button className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-[#0A0F16] font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(108,229,177,0.2)]">
+                <a href="#pricing" className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-[#0A0F16] font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(108,229,177,0.2)]">
                   <span>Garantir minha vaga</span>
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black text-accent text-[10px] px-3 py-1 rounded-full uppercase tracking-wider font-bold shadow-lg border border-accent/20 whitespace-nowrap">1º Lote</span>
-                </button>
+                </a>
               </div>
             </div>
           </motion.div>
@@ -297,7 +337,7 @@ export default function App() {
       </div>
 
       {/* Third Section: Pricing & CTA */}
-      <section className="pt-12 pb-24 relative overflow-hidden">
+      <section id="pricing" className="pt-12 pb-24 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent opacity-[0.02] blur-[100px] rounded-full pointer-events-none" />
         
         <div className="max-w-3xl mx-auto px-6 relative z-10">
@@ -338,11 +378,11 @@ export default function App() {
               </div>
             </div>
 
-            <button className="w-full group relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-[#0A0F16] font-bold text-xl px-8 py-5 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(108,229,177,0.2)]">
+            <a href="https://pay.hub.la/aXIzoHnH3aaWSllWoxn0" target="_blank" rel="noopener noreferrer" className="w-full group relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-[#0A0F16] font-bold text-xl px-8 py-5 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(108,229,177,0.2)]">
               <span>Garantir minha vaga</span>
               <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
               <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black text-accent text-xs px-4 py-1 rounded-full uppercase tracking-wider font-bold shadow-lg border border-accent/20 whitespace-nowrap">1º Lote</span>
-            </button>
+            </a>
             
             <div className="mt-6 flex items-center justify-center gap-2 text-sm text-text-muted">
               <ShieldAlert className="w-4 h-4" />
@@ -401,20 +441,29 @@ export default function App() {
       <section className="py-24 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">O que dizem as alunas</h2>
-          <p className="text-xl text-text-secondary">Histórias reais de quem já passou pelo processo.</p>
+          <p className="text-xl text-text-secondary mb-8">Histórias reais de quem já passou pelo processo.</p>
         </div>
 
         {/* Infinite Carousel */}
-        <div className="relative w-full flex overflow-hidden">
+        <div className="relative w-full flex overflow-hidden mb-8">
           {/* Gradient Masks for smooth fade on edges */}
           <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-bg-primary to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-bg-primary to-transparent z-10 pointer-events-none" />
           
-          <motion.div 
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
-            className="flex gap-6 w-max px-6 hover:[animation-play-state:paused]"
+          <div 
+            ref={carouselRef}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onTouchStart={() => setIsHovered(true)}
+            onTouchEnd={() => setIsHovered(false)}
+            className="flex gap-6 w-full px-6 overflow-x-auto snap-x snap-mandatory pb-8"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
+            <style>{`
+              .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+              }
+            `}</style>
             {/* 
               TODO: TROQUE AS IMAGENS DOS DEPOIMENTOS AQUI
               Adicione as URLs das imagens dos prints nos arrays abaixo.
@@ -433,7 +482,7 @@ export default function App() {
               "http://brunosimplicio.com.br/wp-content/uploads/2026/03/Screenshot-2026-02-24-at-18.03.jpg",
               "http://brunosimplicio.com.br/wp-content/uploads/2026/03/55-66-9984-0460.png",
             ].map((src, i) => (
-              <div key={i} className="w-[280px] md:w-[350px] flex-shrink-0">
+              <div key={i} className="w-[320px] md:w-[420px] flex-shrink-0 snap-center">
                 <img 
                   src={src} 
                   alt="Depoimento" 
@@ -442,7 +491,25 @@ export default function App() {
                 />
               </div>
             ))}
-          </motion.div>
+          </div>
+        </div>
+
+        {/* Carousel Controls */}
+        <div className="flex justify-center gap-4">
+          <button 
+            onClick={scrollLeftBtn}
+            className="p-3 rounded-full bg-bg-secondary border border-border-subtle hover:bg-bg-tertiary transition-colors"
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button 
+            onClick={scrollRightBtn}
+            className="p-3 rounded-full bg-bg-secondary border border-border-subtle hover:bg-bg-tertiary transition-colors"
+            aria-label="Próximo"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
         </div>
       </section>
 
