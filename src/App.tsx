@@ -106,10 +106,10 @@ export default function App() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="w-full sm:w-auto flex flex-col items-center md:items-start mt-4"
             >
-              <a href="#pricing" className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-[#0A0F16] font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(108,229,177,0.2)]">
-                <span>Garantir minha vaga</span>
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black text-accent text-[10px] px-3 py-1 rounded-full uppercase tracking-wider font-bold shadow-lg border border-accent/20 whitespace-nowrap">1º Lote</span>
+              <a id="btn-hero-cta" href="#pricing" className="gtm-linkClick w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-[#0A0F16] font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(108,229,177,0.2)]">
+                <span className="pointer-events-none">Garantir minha vaga</span>
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform pointer-events-none" />
+                <span className="pointer-events-none absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black text-accent text-[10px] px-3 py-1 rounded-full uppercase tracking-wider font-bold shadow-lg border border-accent/20 whitespace-nowrap">1º Lote</span>
               </a>
             </motion.div>
           </div>
@@ -149,10 +149,10 @@ export default function App() {
               ))}
             </ul>
 
-            <a href="#pricing" className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-200 text-black font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300">
-              <span>Garantir minha vaga</span>
-              <ChevronRight className="w-5 h-5 text-black group-hover:translate-x-1 transition-transform" />
-              <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-3 py-1 rounded-full uppercase tracking-wider font-bold shadow-lg whitespace-nowrap">1º Lote</span>
+            <a id="btn-benefits-cta" href="#pricing" className="gtm-linkClick w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-200 text-black font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300">
+              <span className="pointer-events-none">Garantir minha vaga</span>
+              <ChevronRight className="w-5 h-5 text-black group-hover:translate-x-1 transition-transform pointer-events-none" />
+              <span className="pointer-events-none absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-3 py-1 rounded-full uppercase tracking-wider font-bold shadow-lg whitespace-nowrap">1º Lote</span>
             </a>
           </motion.div>
         </div>
@@ -239,10 +239,10 @@ export default function App() {
                   <span className="text-accent block mt-2">Mas, sem perceber, ele acaba tirando das suas mãos o controle da própria vida.</span>
                 </p>
                 
-                <a href="#pricing" className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-[#0A0F16] font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(108,229,177,0.2)]">
-                  <span>Garantir minha vaga</span>
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black text-accent text-[10px] px-3 py-1 rounded-full uppercase tracking-wider font-bold shadow-lg border border-accent/20 whitespace-nowrap">1º Lote</span>
+                <a id="btn-emotional-cta" href="#pricing" className="gtm-linkClick w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-[#0A0F16] font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(108,229,177,0.2)]">
+                  <span className="pointer-events-none">Garantir minha vaga</span>
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform pointer-events-none" />
+                  <span className="pointer-events-none absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black text-accent text-[10px] px-3 py-1 rounded-full uppercase tracking-wider font-bold shadow-lg border border-accent/20 whitespace-nowrap">1º Lote</span>
                 </a>
               </div>
             </div>
@@ -378,10 +378,10 @@ export default function App() {
               </div>
             </div>
 
-            <a href="https://pay.hub.la/aXIzoHnH3aaWSllWoxn0" target="_blank" rel="noopener noreferrer" className="w-full group relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-[#0A0F16] font-bold text-xl px-8 py-5 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(108,229,177,0.2)]">
-              <span>Garantir minha vaga</span>
-              <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-              <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black text-accent text-xs px-4 py-1 rounded-full uppercase tracking-wider font-bold shadow-lg border border-accent/20 whitespace-nowrap">1º Lote</span>
+            <a id="btn-checkout-cta" href="https://pay.hub.la/aXIzoHnH3aaWSllWoxn0" target="_blank" rel="noopener noreferrer" className="gtm-linkClick w-full group relative inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-[#0A0F16] font-bold text-xl px-8 py-5 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_rgba(108,229,177,0.2)]">
+              <span className="pointer-events-none">Garantir minha vaga</span>
+              <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform pointer-events-none" />
+              <span className="pointer-events-none absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black text-accent text-xs px-4 py-1 rounded-full uppercase tracking-wider font-bold shadow-lg border border-accent/20 whitespace-nowrap">1º Lote</span>
             </a>
             
             <div className="mt-6 flex items-center justify-center gap-2 text-sm text-text-muted">
